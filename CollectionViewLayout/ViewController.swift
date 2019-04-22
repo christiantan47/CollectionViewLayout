@@ -75,11 +75,14 @@ extension ViewController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             let cellLandscape = newsCollection.dequeueReusableCell(withReuseIdentifier: "NewsCellLandscape", for: indexPath) as! NewsCellLandscape
             cellLandscape.newsTitleLabel.text = newsData[indexPath.row].title
             cellLandscape.newsSnippetLabel.text = newsData[indexPath.row].abstract
+            cellLandscape.newsDateLabel.text = newsData[indexPath.row].publishedDate
+            
             return cellLandscape
         } else {
             let cell = newsCollection.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! NewsViewCell
             cell.newsTitleLabel.text = newsData[indexPath.row].title
             cell.newsSnippetLabel.text = newsData[indexPath.row].abstract
+            cell.newsDateLabel.text = newsData[indexPath.row].publishedDate
             return cell
         }
         
@@ -90,7 +93,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             
             return CGSize(width: (self.view.safeAreaLayoutGuide.layoutFrame.width-10)/4, height: view.frame.height)
         } else {
-            return CGSize(width: view.frame.width, height: 390)
+            return CGSize(width: view.frame.width, height: 370)
         }
     }
     
