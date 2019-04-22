@@ -43,10 +43,17 @@ class ViewController: UIViewController {
         guard let url = URL(string: jsonURLString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
+            
             guard let data = data else {return}
             
             do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+    
+                print(json)
+//                print(result)
+//                print(response)
                 let course = try JSONDecoder().decode(NewsModel.self, from: data)
+            
                 course.results.enumerated().forEach({ (idx, result) in
                     self.newsData.append(result)
                     
@@ -61,6 +68,9 @@ class ViewController: UIViewController {
         }.resume()
     }
     
+    func fetchImage(){
+        
+    }
     
 }
 
