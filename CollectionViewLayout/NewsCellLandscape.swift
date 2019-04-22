@@ -14,6 +14,7 @@ class NewsCellLandscape: UICollectionViewCell {
     @IBOutlet weak var newsTitleLabel: UILabel!
     @IBOutlet weak var newsSnippetLabel: UILabel!
     @IBOutlet weak var newsDateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
