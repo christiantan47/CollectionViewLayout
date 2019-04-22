@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+extension ViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -53,5 +53,24 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource{
         
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if UIDevice.current.orientation.isLandscape{
+            
+            return CGSize(width: (self.view.safeAreaLayoutGuide.layoutFrame.width-10)/4, height: view.frame.height)
+        } else {
+            return CGSize(width: view.frame.width, height: 390)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+        
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 1
+//
+//    }
+    
 }
 

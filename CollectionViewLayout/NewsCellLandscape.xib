@@ -25,23 +25,20 @@
                             <constraint firstAttribute="height" constant="140" id="xm9-X9-GYD"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHc-Lv-pbl">
-                        <rect key="frame" x="10" y="156" width="41" height="23"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHc-Lv-pbl">
+                        <rect key="frame" x="8" y="148" width="196" height="23"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="snippet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcQ-w0-3Ie">
-                        <rect key="frame" x="8" y="239" width="57" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="snippet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcQ-w0-3Ie">
+                        <rect key="frame" x="8" y="179" width="196" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOD-M7-yaB">
-                        <rect key="frame" x="8" y="331" width="29" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOD-M7-yaB">
+                        <rect key="frame" x="8" y="335" width="196" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
@@ -50,9 +47,18 @@
             </view>
             <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="SOD-M7-yaB" secondAttribute="trailing" constant="8" id="7l5-rP-tTy"/>
                 <constraint firstAttribute="trailing" secondItem="nVw-wl-4J7" secondAttribute="trailing" id="Ehm-Mw-xBb"/>
+                <constraint firstItem="lHc-Lv-pbl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Gnu-2L-2nR"/>
+                <constraint firstAttribute="bottom" secondItem="SOD-M7-yaB" secondAttribute="bottom" constant="20" id="MIQ-tM-KNw"/>
+                <constraint firstAttribute="trailing" secondItem="lHc-Lv-pbl" secondAttribute="trailing" constant="8" id="OkV-uJ-oL4"/>
                 <constraint firstItem="nVw-wl-4J7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zzj-pZ-noy"/>
+                <constraint firstItem="lHc-Lv-pbl" firstAttribute="top" secondItem="nVw-wl-4J7" secondAttribute="bottom" constant="8" id="dzS-0R-ZUf"/>
                 <constraint firstItem="nVw-wl-4J7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f5p-6d-GYV"/>
+                <constraint firstItem="PcQ-w0-3Ie" firstAttribute="top" secondItem="lHc-Lv-pbl" secondAttribute="bottom" constant="8" id="udW-0x-gge"/>
+                <constraint firstItem="SOD-M7-yaB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="wGf-Zr-yBY"/>
+                <constraint firstItem="PcQ-w0-3Ie" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="wpG-Ut-ZYL"/>
+                <constraint firstAttribute="trailing" secondItem="PcQ-w0-3Ie" secondAttribute="trailing" constant="8" id="yvM-ec-u4r"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="212" height="372"/>
