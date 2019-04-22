@@ -16,6 +16,11 @@ class ViewController: UIViewController {
     
     let jsonURLString : String = "https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=bNWIDehmwXoP35vEBymP7nWkB4IyUchF"
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
