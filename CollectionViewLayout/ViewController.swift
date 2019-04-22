@@ -10,7 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var newsData: [Result] = []
+    
     @IBOutlet weak var newsCollection: UICollectionView!
+    
+    let jsonURLString : String = "https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=bNWIDehmwXoP35vEBymP7nWkB4IyUchF"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -18,6 +23,10 @@ class ViewController: UIViewController {
         newsCollection.dataSource = self
         
         newsCollection.register(UINib(nibName: "NewsCellLandscape", bundle: nil), forCellWithReuseIdentifier: "NewsCellLandscape")
+        
+        fetchNews()
+        
+    
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -30,24 +39,47 @@ class ViewController: UIViewController {
         
     }
     
+    func fetchNews(){
+        guard let url = URL(string: jsonURLString) else {return}
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            guard let data = data else {return}
+            
+            do {
+                let course = try JSONDecoder().decode(NewsModel.self, from: data)
+                course.results.enumerated().forEach({ (idx, result) in
+                    self.newsData.append(result)
+                    
+                    DispatchQueue.main.async {
+                        self.newsCollection.reloadData()
+                    }
+                })
+                
+            } catch let jsonErr{
+                print("Error parsing json \(jsonErr)")
+            }
+        }.resume()
+    }
     
     
 }
 
 extension ViewController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return newsData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if UIDevice.current.orientation.isLandscape {
             let cellLandscape = newsCollection.dequeueReusableCell(withReuseIdentifier: "NewsCellLandscape", for: indexPath) as! NewsCellLandscape
-            cellLandscape.newsTitleLabel.text = "Berita \(indexPath.row+1)"
+            cellLandscape.newsTitleLabel.text = newsData[indexPath.row].title
+            cellLandscape.newsSnippetLabel.text = newsData[indexPath.row].abstract
             return cellLandscape
         } else {
             let cell = newsCollection.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! NewsViewCell
-            cell.newsTitleLabel.text = "Berita \(indexPath.row+1)"
+            cell.newsTitleLabel.text = newsData[indexPath.row].title
+            cell.newsSnippetLabel.text = newsData[indexPath.row].abstract
             return cell
         }
         
