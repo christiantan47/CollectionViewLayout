@@ -28,7 +28,7 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = newsCollection.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! NewsViewCell
-        cell.newsLabel.text = "Berita \(indexPath.row)"
+        cell.newsLabel.text = "Berita \(indexPath.row+1)"
         return cell
     }
     
