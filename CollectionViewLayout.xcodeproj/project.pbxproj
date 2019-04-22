@@ -43,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E444C21226DEC24008B8120 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4EC2325C226DABA300E1CFAF /* NewsCellLandscape.swift */,
+				4E85BE272265A82400B1149A /* ViewController.swift */,
+				4E85BE372265ED8100B1149A /* NewsViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		4E85BE192265A82400B1149A = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +72,10 @@
 		4E85BE242265A82400B1149A /* CollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
-				4EC2325C226DABA300E1CFAF /* NewsCellLandscape.swift */,
+				4E444C21226DEC24008B8120 /* Controller */,
 				4E85BE252265A82400B1149A /* AppDelegate.swift */,
 				4EC23265226DC07800E1CFAF /* Model */,
 				4EC23262226DBE8A00E1CFAF /* View */,
-				4E85BE272265A82400B1149A /* ViewController.swift */,
-				4E85BE372265ED8100B1149A /* NewsViewCell.swift */,
 				4E85BE2C2265A82700B1149A /* Assets.xcassets */,
 				4E85BE2E2265A82700B1149A /* LaunchScreen.storyboard */,
 				4E85BE312265A82700B1149A /* Info.plist */,
