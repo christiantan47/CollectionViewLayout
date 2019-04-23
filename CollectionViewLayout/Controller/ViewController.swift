@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var newsData: [Result] = []
+    var imageData : [Multimedia] = []
     
     @IBOutlet weak var newsCollection: UICollectionView!
     
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
         
         fetchNews()
         
-    
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -52,30 +53,27 @@ class ViewController: UIViewController {
             guard let data = data else {return}
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-    
-                print(json)
-//                print(result)
-//                print(response)
+                
                 let course = try JSONDecoder().decode(NewsModel.self, from: data)
-            
+                
                 course.results.enumerated().forEach({ (idx, result) in
                     self.newsData.append(result)
-                    
-                    DispatchQueue.main.async {
-                        self.newsCollection.reloadData()
-                    }
+                    result.multimedia.forEach({ (multimedia) in
+                        self.imageData.append(multimedia)
+                    })
                 })
                 
-            } catch let jsonErr{
+                DispatchQueue.main.async {
+                    self.newsCollection.reloadData()
+                }
+            }
+                
+            catch let jsonErr{
                 print("Error parsing json \(jsonErr)")
             }
-        }.resume()
+            }.resume()
     }
     
-    func fetchImage(){
-        
-    }
     
 }
 
@@ -95,14 +93,24 @@ extension ViewController : UICollectionViewDelegateFlowLayout, UICollectionViewD
             return cellLandscape
         } else {
             let cell = newsCollection.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! NewsViewCell
+            
+            Helper.shared.fetchImage(from: jsonURLString) { (image, error) in
+                if let error = error {
+                    print("error fetching image \(error.localizedDescription)")
+                }else if let image = image {
+                    cell.newsImageView.image = image
+                }
+            }
+        
             cell.newsTitleLabel.text = newsData[indexPath.row].title
             cell.newsSnippetLabel.text = newsData[indexPath.row].abstract
             cell.newsDateLabel.text = newsData[indexPath.row].publishedDate
+            
             return cell
         }
         
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if UIDevice.current.orientation.isLandscape{
             
@@ -117,10 +125,10 @@ extension ViewController : UICollectionViewDelegateFlowLayout, UICollectionViewD
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1
-//
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 1
+    //
+    //    }
     
 }
 
